@@ -1,0 +1,36 @@
+{
+    "NovaServers.boot_and_delete_server": [
+        {
+            "args": {
+                "flavor": {
+                    "name": "m1.medium"
+                },
+                "image": {
+                    "name": "cirros"
+                },
+// rally-subnet(non-shared),
+//               "nics":[{"net-id":"c44d5574-3f7f-4bb3-a3a0-7b9a943962d9"}],
+//rally-external-shared-subnet, use ext-net instead,
+//                "nics":[{"net-id": "9274adcf-899d-4721-a832-3ee04b0032eb"}],
+//rally-external-subnet,
+//                "nics":[{"net-id": "64220985-bc43-4bf6-9507-0e8fde517167"}],
+//rally-shared-subnet,
+                "nics":[{"net-id": "211a78db-b47b-4acd-92e4-5cd051283c61"}],
+//ceph-volume,
+//                  "nics":[{"net-id":"62cbe5c7-facd-42e9-aa68-d8b4c3022851"}],
+//                "detailed": True
+            },
+            "runner": {
+                "type": "constant",
+                "times": 10,
+                "concurrency": 4
+            },
+            "context": {
+                "users": {
+                    "tenants": 5,
+                    "users_per_tenant": 4
+                }
+            }
+        }
+    ]
+}

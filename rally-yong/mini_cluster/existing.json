@@ -1,0 +1,12 @@
+{
+    "type": "ExistingCloud",
+    "auth_url": "http://10.1.0.2:5000/v2.0/",
+    "region_name": "RegionOne",
+    "use_public_urls": true,
+    "admin_port": 35357,
+    "admin": {
+        "username": "admin",
+        "password": "admin",
+        "tenant_name": "admin"
+    }
+}
