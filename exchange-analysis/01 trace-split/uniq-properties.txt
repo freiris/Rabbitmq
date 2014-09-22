@@ -1,0 +1,7 @@
+               {<<"content_encoding">>,longstr,<<"utf-8">>},
+               {<<"content_type">>,longstr,<<"application/json">>}]
+               {<<"delivery_mode">>,signedint,2},
+               {<<"headers">>,table,[]},
+               {<<"headers">>,table,[{<<"ttl">>,signedint,60000}]},
+--
+Properties:   [{<<"priority">>,signedint,0},
