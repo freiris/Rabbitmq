@@ -22,19 +22,14 @@ def _run(host, port, vhost, user, password, rkey):
 		ret = {}
 		ret["timestamp"] = datetime.datetime.now().strftime('%Y-%m-%d %H:%M:%S')
 		ret["headers"] = properties.headers
-		ret["body"] = body
-		"""
-		jsbody = json.loads(body) # unfold one level of string, but we can delay it to later processing in case of efficiency
-		ret["body"] = jsbody #may have a performance penalty
-		"""
+		ret["body"] = json.loads(body) # unfold one level of string, but we can delay it to later processing for  efficiency
 		ret["method"] = {"routing_key": method.routing_key, "delivery_tag": method.delivery_tag,\
 				 "consumer_tag":method.consumer_tag, "exchange":method.exchange, "redelivered": method.redelivered}
 #		print(json.dumps(ret)+',') # print in a compact way 
 		print(json.dumps(ret, indent=4)+',')# dumps can be easily reloaded as json format;\
 #		comma(,) is used to seperate each json object, and form a json array when surrounded with [].\
 #		Note: delete the last one comma.
-		# TODO: directly write to a file 
-		# f.write(json.dumps(ret, indent=4)+',') #?
+# TODO: directly write to a file 
 	channel.basic_consume(callback, queue=queue_name, no_ack=True)
 	channel.start_consuming() 
 
@@ -49,7 +44,7 @@ def main():
     parser.add_option('', '--rkey', metavar='rkey', default='#', help='rabbitmq routing key, default: %default')
     (options, args) = parser.parse_args()
     _run(options.host, options.port, options.vhost, options.user, options.password, options.rkey)
- 
+
 if __name__ == '__main__':
     main()
 
